@@ -1,23 +1,13 @@
-import React from "react";
-import * as S from "./style";
+import React from 'react';
+import TodoItem from '../TodoItem';
+import * as S from './style';
 
-const TodoList = ({ todos, onToggle, onDelete }) => {
+const TodoList = ({ todos, toggleTodo, deleteTodo }) => {
   return (
     <S.List>
+      {todos.length === 0 && 'No Todos'}
       {todos.map((todo) => (
-        <S.ListItem key={todo.id}>
-          <label>
-            <S.Checkbox
-              type="checkbox"
-              checked={todo.completed}
-              onChange={(e) => onToggle(todo.id, e.target.checked)}
-            />
-            {todo.title}
-          </label>
-          <S.DeleteButton onClick={() => onDelete(todo.id)}>
-            Delete
-          </S.DeleteButton>
-        </S.ListItem>
+        <TodoItem {...todo} key={todo.id} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
       ))}
     </S.List>
   );

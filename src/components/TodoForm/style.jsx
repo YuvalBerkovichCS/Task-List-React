@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-top: 1.5rem;
 `;
 
-export const Text = styled.label`
+export const FormRow = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 0.1rem;
 `;
 
 export const Input = styled.input`

@@ -1,10 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const List = styled.ul`
   margin: 0;
   padding: 0;
   margin-left: 1rem;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 `;
 
 export const ListItem = styled.li`
@@ -12,6 +15,18 @@ export const ListItem = styled.li`
   gap: 0.5rem;
   align-items: center;
   margin-bottom: 0.3rem;
+
+  &:has(input:checked) label::before {
+    content: '✔';
+    background: hsl(200, 100%, 40%);
+    color: hsl(200, 100%, 90%);
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+
+  &:has(input:checked) label:hover::before {
+    background: hsl(200, 100%, 30%);
+  }
 `;
 
 export const Checkbox = styled.input`
@@ -21,18 +36,6 @@ export const Checkbox = styled.input`
   appearance: none;
   pointer-events: none;
   position: absolute;
-
-  &:checked + label::before {
-    content: "✔";
-    background: hsl(200, 100%, 40%);
-    color: hsl(200, 100%, 90%);
-    font-size: 0.75rem;
-    font-weight: bold;
-  }
-
-  &:checked + label:hover::before {
-    background: hsl(200, 100%, 30%);
-  }
 `;
 
 export const DeleteButton = styled.button`

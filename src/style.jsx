@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  max-width:400px;
+  padding: 1rem;
+  margin: 0 auto;
+  color: hsl(200,100%,90%);
 `;
 
-export const InnerContainer = styled.div`
-  padding: 10px;
-`;
+export const Header = styled.div`
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+`

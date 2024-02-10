@@ -1,22 +1,26 @@
 import React, { useState } from "react";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
+import { v4 as uuidv4 } from 'uuid';
+
 import * as S from "./style";
 
-export default function App() {
-  const [newItem, setNewItem] = useState("");
-  const [todos, setTodos] = useState([]);
+const App = () => {
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS");
+    if (localValue == null) return [];
+    return JSON.parse(localValue);
+  });
+  
+  useEffect(() => {
+    localStorage.setItem("ITEMS", JSON.stringify(todos));
+  }, [todos]);
 
-  const handleInputChange = (value) => {
-    setNewItem(value);
-  };
-
-  const handleSumbit = () => {
+  const addTodo = (title) => {
     setTodos((currentTodos) => [
       ...currentTodos,
-      { id: Math.random(), title: newItem, completed: false },
+      { id: crypto.randomUUID(), title, completed: false },
     ]);
-    setNewItem("");
   };
 
   const toggleTodo = (id, completed) => {
@@ -33,14 +37,11 @@ export default function App() {
 
   return (
     <S.Container>
-      <TodoForm
-        newItem={newItem}
-        onInputChange={handleInputChange}
-        onSubmit={handleSumbit}
-      />
-      <S.InnerContainer>
-        <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
-      </S.InnerContainer>
+      <TodoForm onSubmit={addTodo}/>
+      <S.Header>Todo List</S.Header>
+      <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
     </S.Container>
   );
 }
+
+export default App;
