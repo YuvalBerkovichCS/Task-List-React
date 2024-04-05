@@ -8,7 +8,7 @@ const TodoForm = ({ onSubmit }) => {
     e.preventDefault();
     if (newItem === '') return;
     onSubmit(newItem);
-    onInputChange('');
+    setNewItem('');
   };
 
   return (

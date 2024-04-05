@@ -1,13 +1,14 @@
 import React from 'react';
 import * as S from './style';
 
-const TodoItem = ({ completed, id, title, toggleTodo, deleteTodo }) => {
+const TodoItem = ({ completed, id, title, onToggle, onDelete }) => {
   return (
     <S.ListItem>
-      <input type="checkbox" checked={completed} onChange={(e) => toggleTodo(id, e.target.checked)} />
-      <label>{title}</label>
-      <S.Button onClick={() => deleteTodo(id)} className="btn btn-danger">
-        {' '}
+      <label>
+        <input type="radio" checked={completed} onChange={(e) => onToggle(id, e.target.checked)} />
+        {title}
+      </label>
+      <S.Button onClick={() => onDelete(id)} className="btn-danger">
         Delete
       </S.Button>
     </S.ListItem>
