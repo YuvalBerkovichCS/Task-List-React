@@ -15,35 +15,6 @@ export const ListItem = styled.li`
       background: hsl(200, 100%, 80%);
     }
   }
-
-  input {
-    outline: none;
-    width: 0;
-    height: 0;
-    appearance: none;
-    pointer-events: none;
-    position: absolute;
-  }
-
-  label::before {
-    content: '';
-    display: block;
-    width: 0.9rem;
-    height: 0.9rem;
-    background: hsl(200, 100%, 90%);
-    border-radius: 0.25em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  input:checked + label::before {
-    content: '✔';
-    background: hsl(200, 100%, 40%);
-    color: hsl(200, 100%, 90%);
-    font-size: 0.75rem;
-    font-weight: bold;
-  }
 `;
 
 export const Button = styled.button`
