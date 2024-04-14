@@ -10,7 +10,6 @@ const App = () => {
     const localValue = localStorage.getItem('ITEMS');
     return localValue == null ? [] : JSON.parse(localValue);
   });
-  console.log({ todos });
   useEffect(() => {
     localStorage.setItem('ITEMS', JSON.stringify(todos));
   }, [todos]);
@@ -28,7 +27,6 @@ const App = () => {
     setTodos((currentTodos) => currentTodos.filter((todo) => todo.id !== id));
   };
   const handleTodoReorder = ({ sourceIndex, targetIndex }) => {
-    console.log(todos, sourceIndex, targetIndex);
     setTodos((prev) => {
       const sourceTodo = prev[sourceIndex];
       const newTodos = [...prev];

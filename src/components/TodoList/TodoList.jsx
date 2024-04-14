@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoItem from '../TodoItem';
-import { DndContext } from '@dnd-kit/core';
+import { DndContext, KeyboardSensor, MouseSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { SortableContext } from '@dnd-kit/sortable';
 
 import * as S from './style';
@@ -12,8 +12,15 @@ const TodoList = ({ todos, onTodoReorder, onToggle, onDelete }) => {
 
     onTodoReorder({ sourceIndex, targetIndex });
   };
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: {
+      distance: 10,
+    },
+  });
+  const keyboardSensor = useSensor(KeyboardSensor);
+  const sensors = useSensors(mouseSensor, keyboardSensor);
   return (
-    <DndContext onDragEnd={reorderTodoList}>
+    <DndContext sensors={sensors} onDragEnd={reorderTodoList}>
       <S.List>
         {todos.length === 0 && 'No Todos'}
         <SortableContext items={todos}>
