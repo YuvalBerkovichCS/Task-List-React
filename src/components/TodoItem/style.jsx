@@ -17,6 +17,14 @@ export const ListItem = styled.li`
   }
 `;
 
+export const Input = styled.input``;
+
+export const Label = styled.label``;
+
+export const DraggableArea = styled.div`
+  cursor: pointer;
+`;
+
 export const Button = styled.button`
   background: hsl(200, 100%, 50%, 0.1);
   border: 1px solid hsl(200, 100%, 50%);
